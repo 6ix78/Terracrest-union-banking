@@ -137,8 +137,8 @@ export default function ServicesPage() {
               <Button size="lg" variant="outline" asChild>
                 <Link href="/contact">Speak to an Advisor</Link>
               </Button>
-            </AnimatedSection>
-          </div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
