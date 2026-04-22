@@ -23,6 +23,7 @@ import {
   Mail,
 } from "lucide-react"
 import { useState } from "react"
+import { AnimatedSection } from "@/components/animated-section"
 
 const faqCategories = [
   { id: "accounts", label: "Accounts", icon: CreditCard },
@@ -166,7 +167,7 @@ export default function FAQPage() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 bg-gradient-to-br from-primary/10 via-secondary/5 to-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
+          <AnimatedSection variant="fade-up" className="max-w-3xl mx-auto text-center">
             <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
               Help Center
             </span>
@@ -187,7 +188,7 @@ export default function FAQPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-12 pr-4 py-4 rounded-xl border border-border bg-card focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
               />
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -266,14 +267,15 @@ export default function FAQPage() {
       {/* Still Need Help */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <AnimatedSection variant="fade-up" className="text-center mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">Still Have Questions?</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Our support team is here to help. Choose your preferred way to reach us.
             </p>
-          </div>
+          </AnimatedSection>
 
           <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <AnimatedSection variant="fade-up" delay={0}>
             <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -286,7 +288,9 @@ export default function FAQPage() {
                 <Button variant="outline" className="w-full">Start Chat</Button>
               </CardContent>
             </Card>
+            </AnimatedSection>
 
+            <AnimatedSection variant="fade-up" delay={100}>
             <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -299,7 +303,9 @@ export default function FAQPage() {
                 <Button variant="outline" className="w-full">1-800-TERRA-CU</Button>
               </CardContent>
             </Card>
+            </AnimatedSection>
 
+            <AnimatedSection variant="fade-up" delay={200}>
             <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -314,6 +320,7 @@ export default function FAQPage() {
                 </Button>
               </CardContent>
             </Card>
+            </AnimatedSection>
           </div>
         </div>
       </section>

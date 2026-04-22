@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { AnimatedSection } from "@/components/animated-section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -129,7 +130,7 @@ export default function AboutPage() {
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-primary via-primary/95 to-secondary py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
+            <AnimatedSection variant="fade-up" className="mx-auto max-w-3xl text-center">
               <h1 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl">
                 About TerraCrest Union
               </h1>
@@ -137,7 +138,7 @@ export default function AboutPage() {
                 For over 70 years, we have been committed to helping individuals and businesses 
                 achieve their financial goals through innovative banking solutions and exceptional service.
               </p>
-            </div>
+            </AnimatedSection>
           </div>
         </section>
 
@@ -145,11 +146,11 @@ export default function AboutPage() {
         <section className="border-b border-border bg-card py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
+              {stats.map((stat, i) => (
+                <AnimatedSection key={stat.label} variant="fade-up" delay={i * 80} className="text-center">
                   <p className="text-3xl font-bold text-primary sm:text-4xl">{stat.value}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
-                </div>
+                </AnimatedSection>
               ))}
             </div>
           </div>
@@ -159,7 +160,7 @@ export default function AboutPage() {
         <section className="py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div>
+              <AnimatedSection variant="slide-in-left">
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary">Our Mission</p>
                 <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                   Empowering Financial Success for Everyone
@@ -181,8 +182,8 @@ export default function AboutPage() {
                     <Link href="/contact">Get in Touch</Link>
                   </Button>
                 </div>
-              </div>
-              <div className="relative">
+              </AnimatedSection>
+              <AnimatedSection variant="slide-in-right" className="relative">
                 <div className="aspect-square overflow-hidden rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10">
                   <div className="flex h-full items-center justify-center p-8">
                     <Image
@@ -194,7 +195,7 @@ export default function AboutPage() {
                     />
                   </div>
                 </div>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>
@@ -202,7 +203,7 @@ export default function AboutPage() {
         {/* Values Section */}
         <section className="bg-muted/30 py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-16 text-center">
+            <AnimatedSection variant="fade-up" className="mb-16 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">Our Values</p>
               <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                 What We Stand For
@@ -211,18 +212,20 @@ export default function AboutPage() {
                 Our core values guide every interaction and decision, ensuring we deliver 
                 the best possible experience to our customers.
               </p>
-            </div>
+            </AnimatedSection>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {values.map((value) => (
-                <Card key={value.title} className="border-border/50 text-center">
-                  <CardContent className="pt-6">
-                    <div className="mx-auto mb-4 inline-flex rounded-xl bg-primary/10 p-4 text-primary">
-                      <value.icon className="h-8 w-8" />
-                    </div>
-                    <h3 className="text-lg font-semibold">{value.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{value.description}</p>
-                  </CardContent>
-                </Card>
+              {values.map((value, i) => (
+                <AnimatedSection key={value.title} variant="fade-up" delay={i * 100}>
+                  <Card className="border-border/50 text-center h-full">
+                    <CardContent className="pt-6">
+                      <div className="mx-auto mb-4 inline-flex rounded-xl bg-primary/10 p-4 text-primary">
+                        <value.icon className="h-8 w-8" />
+                      </div>
+                      <h3 className="text-lg font-semibold">{value.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground">{value.description}</p>
+                    </CardContent>
+                  </Card>
+                </AnimatedSection>
               ))}
             </div>
           </div>
@@ -231,7 +234,7 @@ export default function AboutPage() {
         {/* History Timeline */}
         <section className="py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-16 text-center">
+            <AnimatedSection variant="fade-up" className="mb-16 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">Our Journey</p>
               <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                 70+ Years of Excellence
@@ -240,13 +243,15 @@ export default function AboutPage() {
                 From our humble beginnings to becoming a leading digital bank, 
                 explore the key milestones in our history.
               </p>
-            </div>
+            </AnimatedSection>
             <div className="relative">
               <div className="absolute left-1/2 top-0 hidden h-full w-0.5 -translate-x-1/2 bg-border lg:block" />
               <div className="space-y-12">
                 {milestones.map((milestone, index) => (
-                  <div 
-                    key={milestone.year} 
+                  <AnimatedSection
+                    key={milestone.year}
+                    variant={index % 2 === 0 ? "slide-in-left" : "slide-in-right"}
+                    delay={0}
                     className={`relative flex flex-col gap-4 lg:flex-row lg:gap-8 ${
                       index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
                     }`}
@@ -262,7 +267,7 @@ export default function AboutPage() {
                     </div>
                     <div className="absolute left-1/2 top-6 hidden h-4 w-4 -translate-x-1/2 rounded-full border-4 border-primary bg-card lg:block" />
                     <div className="flex-1" />
-                  </div>
+                  </AnimatedSection>
                 ))}
               </div>
             </div>
@@ -272,7 +277,7 @@ export default function AboutPage() {
         {/* Leadership Section */}
         <section className="bg-muted/30 py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-16 text-center">
+            <AnimatedSection variant="fade-up" className="mb-16 text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">Leadership</p>
               <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                 Meet Our Executive Team
@@ -281,19 +286,21 @@ export default function AboutPage() {
                 Our experienced leadership team brings decades of expertise in banking, 
                 technology, and customer service.
               </p>
-            </div>
+            </AnimatedSection>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {leadership.map((leader) => (
-                <Card key={leader.name} className="border-border/50 text-center">
-                  <CardContent className="pt-6">
-                    <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-primary/10 text-3xl font-bold text-primary">
-                      {leader.name.split(" ").map((n) => n[0]).join("")}
-                    </div>
-                    <h3 className="text-lg font-semibold">{leader.name}</h3>
-                    <p className="text-sm font-medium text-primary">{leader.role}</p>
-                    <p className="mt-2 text-sm text-muted-foreground">{leader.bio}</p>
-                  </CardContent>
-                </Card>
+              {leadership.map((leader, i) => (
+                <AnimatedSection key={leader.name} variant="fade-up" delay={i * 100}>
+                  <Card className="border-border/50 text-center h-full">
+                    <CardContent className="pt-6">
+                      <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-primary/10 text-3xl font-bold text-primary">
+                        {leader.name.split(" ").map((n) => n[0]).join("")}
+                      </div>
+                      <h3 className="text-lg font-semibold">{leader.name}</h3>
+                      <p className="text-sm font-medium text-primary">{leader.role}</p>
+                      <p className="mt-2 text-sm text-muted-foreground">{leader.bio}</p>
+                    </CardContent>
+                  </Card>
+                </AnimatedSection>
               ))}
             </div>
           </div>
@@ -303,7 +310,7 @@ export default function AboutPage() {
         <section className="py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div>
+              <AnimatedSection variant="slide-in-left">
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary">Recognition</p>
                 <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                   Award-Winning Excellence
@@ -320,8 +327,8 @@ export default function AboutPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
+              </AnimatedSection>
+              <AnimatedSection variant="slide-in-right" className="grid grid-cols-2 gap-4">
                 <Card className="border-border/50 p-6 text-center">
                   <TrendingUp className="mx-auto h-10 w-10 text-primary" />
                   <p className="mt-2 text-2xl font-bold">98%</p>
@@ -342,7 +349,7 @@ export default function AboutPage() {
                   <p className="mt-2 text-2xl font-bold">A+</p>
                   <p className="text-sm text-muted-foreground">BBB Rating</p>
                 </Card>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>

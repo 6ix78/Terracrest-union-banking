@@ -32,6 +32,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { AnimatedSection } from "@/components/animated-section"
 
 const stats = [
   { value: "2M+", label: "Active Customers" },
@@ -217,7 +218,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-50" />
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div className="text-center lg:text-left">
+              <AnimatedSection variant="fade-up" className="text-center lg:text-left">
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-white backdrop-blur-sm">
                   <Shield className="h-4 w-4" />
                   <span>Trusted by 2+ Million Customers Worldwide</span>
@@ -250,8 +251,8 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
-              </div>
-              <div className="relative hidden lg:block">
+              </AnimatedSection>
+              <AnimatedSection variant="slide-in-right" className="relative hidden lg:block">
                 <div className="relative mx-auto w-full max-w-lg">
                   <div className="absolute -left-4 -top-4 h-72 w-72 animate-pulse rounded-full bg-accent/30 blur-3xl" />
                   <div className="absolute -bottom-4 -right-4 h-72 w-72 animate-pulse rounded-full bg-white/20 blur-3xl" />
@@ -301,7 +302,7 @@ export default function HomePage() {
                     </div>
                   </Card>
                 </div>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>
@@ -310,11 +311,11 @@ export default function HomePage() {
         <section className="border-b border-border bg-card py-12">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
+              {stats.map((stat, i) => (
+                <AnimatedSection key={stat.label} variant="fade-up" delay={i * 80} className="text-center">
                   <p className="text-3xl font-bold text-primary sm:text-4xl">{stat.value}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
-                </div>
+                </AnimatedSection>
               ))}
             </div>
           </div>
@@ -324,17 +325,19 @@ export default function HomePage() {
         <section className="py-16 lg:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {bankingBenefits.map((benefit) => (
-                <Card key={benefit.title} className="group overflow-hidden border-border/50 transition-all hover:border-primary/30 hover:shadow-lg">
-                  <CardContent className="p-6">
-                    <div className="mb-3 inline-flex rounded-xl bg-primary/10 p-3 text-primary">
-                      <benefit.icon className="h-5 w-5" />
-                    </div>
-                    <p className="text-2xl font-bold text-primary">{benefit.value}</p>
-                    <h3 className="mt-1 font-semibold">{benefit.title}</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">{benefit.description}</p>
-                  </CardContent>
-                </Card>
+              {bankingBenefits.map((benefit, i) => (
+                <AnimatedSection key={benefit.title} variant="fade-up" delay={i * 100}>
+                  <Card className="group overflow-hidden border-border/50 transition-all hover:border-primary/30 hover:shadow-lg">
+                    <CardContent className="p-6">
+                      <div className="mb-3 inline-flex rounded-xl bg-primary/10 p-3 text-primary">
+                        <benefit.icon className="h-5 w-5" />
+                      </div>
+                      <p className="text-2xl font-bold text-primary">{benefit.value}</p>
+                      <h3 className="mt-1 font-semibold">{benefit.title}</h3>
+                      <p className="mt-1 text-sm text-muted-foreground">{benefit.description}</p>
+                    </CardContent>
+                  </Card>
+                </AnimatedSection>
               ))}
             </div>
           </div>
@@ -343,7 +346,7 @@ export default function HomePage() {
         {/* Core Features Section */}
         <section className="bg-muted/30 py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
+            <AnimatedSection variant="fade-up" className="mx-auto max-w-3xl text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">Why Choose Us</p>
               <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                 Modern Banking for Modern Life
@@ -351,18 +354,20 @@ export default function HomePage() {
               <p className="mt-4 text-pretty text-lg text-muted-foreground">
                 Discover a new way to manage your money with features designed for the digital age.
               </p>
-            </div>
+            </AnimatedSection>
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {coreFeatures.map((feature) => (
-                <Card key={feature.title} className="group border-border/50 bg-card transition-all hover:border-primary/30 hover:shadow-lg">
-                  <CardContent className="p-6">
-                    <div className="mb-4 inline-flex rounded-xl bg-primary/10 p-3 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                      <feature.icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="text-lg font-semibold">{feature.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
+              {coreFeatures.map((feature, i) => (
+                <AnimatedSection key={feature.title} variant="fade-up" delay={i * 80}>
+                  <Card className="group border-border/50 bg-card transition-all hover:border-primary/30 hover:shadow-lg h-full">
+                    <CardContent className="p-6">
+                      <div className="mb-4 inline-flex rounded-xl bg-primary/10 p-3 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                        <feature.icon className="h-6 w-6" />
+                      </div>
+                      <h3 className="text-lg font-semibold">{feature.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground">{feature.description}</p>
+                    </CardContent>
+                  </Card>
+                </AnimatedSection>
               ))}
             </div>
             <div className="mt-12 text-center">
@@ -378,7 +383,7 @@ export default function HomePage() {
         {/* How It Works Section */}
         <section className="py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
+            <AnimatedSection variant="fade-up" className="mx-auto max-w-3xl text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">Get Started</p>
               <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                 Open Your Account in 4 Easy Steps
@@ -386,10 +391,10 @@ export default function HomePage() {
               <p className="mt-4 text-pretty text-lg text-muted-foreground">
                 Getting started with TerraCrest Union is quick and simple. Follow these steps to begin your journey.
               </p>
-            </div>
+            </AnimatedSection>
             <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {bankingSteps.map((step, index) => (
-                <div key={step.step} className="relative">
+                <AnimatedSection key={step.step} variant="fade-up" delay={index * 100} className="relative">
                   {index < bankingSteps.length - 1 && (
                     <div className="absolute left-1/2 top-16 hidden h-0.5 w-full bg-gradient-to-r from-primary/50 to-transparent lg:block" />
                   )}
@@ -401,7 +406,7 @@ export default function HomePage() {
                     <h3 className="text-lg font-semibold">{step.title}</h3>
                     <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
                   </div>
-                </div>
+                </AnimatedSection>
               ))}
             </div>
             <div className="mt-12 text-center">
@@ -418,7 +423,7 @@ export default function HomePage() {
         <section className="bg-muted/50 py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div>
+              <AnimatedSection variant="slide-in-left">
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary">Our Services</p>
                 <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                   Complete Banking Solutions for Every Need
@@ -447,8 +452,8 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
-              </div>
-              <div className="relative lg:pl-8">
+              </AnimatedSection>
+              <AnimatedSection variant="slide-in-right" className="relative lg:pl-8">
                 <div className="relative">
                   <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-primary/20 via-transparent to-accent/20 blur-2xl" />
                   <Card className="relative overflow-hidden border-0 shadow-2xl">
@@ -485,7 +490,7 @@ export default function HomePage() {
                     </CardContent>
                   </Card>
                 </div>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>
@@ -494,7 +499,7 @@ export default function HomePage() {
         <section className="py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div className="order-2 lg:order-1">
+              <AnimatedSection variant="slide-in-left" className="order-2 lg:order-1">
                 <div className="grid gap-6 sm:grid-cols-2">
                   {whyChooseUs.map((item, index) => (
                     <Card key={item.title} className={`border-border/50 ${index % 2 === 1 ? "sm:translate-y-6" : ""}`}>
@@ -508,8 +513,8 @@ export default function HomePage() {
                     </Card>
                   ))}
                 </div>
-              </div>
-              <div className="order-1 lg:order-2">
+              </AnimatedSection>
+              <AnimatedSection variant="slide-in-right" className="order-1 lg:order-2">
                 <p className="text-sm font-semibold uppercase tracking-wider text-primary">Built for Trust</p>
                 <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                   Your Financial Security is Our Priority
@@ -537,7 +542,7 @@ export default function HomePage() {
                     <Link href="/about">Learn More About Us</Link>
                   </Button>
                 </div>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>
@@ -546,7 +551,7 @@ export default function HomePage() {
         <section className="bg-sidebar py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div className="text-sidebar-foreground">
+              <AnimatedSection variant="slide-in-left" className="text-sidebar-foreground">
                 <p className="text-sm font-semibold uppercase tracking-wider text-sidebar-primary">See It In Action</p>
                 <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                   Experience the Future of Banking
@@ -573,8 +578,8 @@ export default function HomePage() {
                     <Link href="/register">Start Free Trial</Link>
                   </Button>
                 </div>
-              </div>
-              <div className="relative">
+              </AnimatedSection>
+              <AnimatedSection variant="slide-in-right" className="relative">
                 <div className="aspect-video overflow-hidden rounded-2xl bg-sidebar-accent shadow-2xl">
                   <div className="flex h-full items-center justify-center">
                     <button className="group flex h-20 w-20 items-center justify-center rounded-full bg-sidebar-primary text-sidebar-primary-foreground shadow-lg transition-transform hover:scale-110">
@@ -582,7 +587,7 @@ export default function HomePage() {
                     </button>
                   </div>
                 </div>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>
@@ -590,7 +595,7 @@ export default function HomePage() {
         {/* Testimonials Section */}
         <section className="bg-gradient-to-br from-primary/5 to-secondary/5 py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
+            <AnimatedSection variant="fade-up" className="mx-auto max-w-3xl text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">Testimonials</p>
               <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                 Trusted by Thousands of Happy Customers
@@ -598,28 +603,30 @@ export default function HomePage() {
               <p className="mt-4 text-pretty text-lg text-muted-foreground">
                 See what our customers have to say about their experience with TerraCrest Union.
               </p>
-            </div>
+            </AnimatedSection>
             <div className="mt-16 grid gap-8 md:grid-cols-3">
-              {testimonials.map((testimonial) => (
-                <Card key={testimonial.name} className="border-border/50">
-                  <CardContent className="p-6">
-                    <div className="mb-4 flex gap-1">
-                      {Array.from({ length: testimonial.rating }).map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-accent text-accent" />
-                      ))}
-                    </div>
-                    <p className="text-muted-foreground">&ldquo;{testimonial.content}&rdquo;</p>
-                    <div className="mt-6 flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">
-                        {testimonial.name.charAt(0)}
+              {testimonials.map((testimonial, i) => (
+                <AnimatedSection key={testimonial.name} variant="fade-up" delay={i * 120}>
+                  <Card className="border-border/50 h-full">
+                    <CardContent className="p-6">
+                      <div className="mb-4 flex gap-1">
+                        {Array.from({ length: testimonial.rating }).map((_, i) => (
+                          <Star key={i} className="h-5 w-5 fill-accent text-accent" />
+                        ))}
                       </div>
-                      <div>
-                        <p className="font-semibold">{testimonial.name}</p>
-                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                      <p className="text-muted-foreground">&ldquo;{testimonial.content}&rdquo;</p>
+                      <div className="mt-6 flex items-center gap-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">
+                          {testimonial.name.charAt(0)}
+                        </div>
+                        <div>
+                          <p className="font-semibold">{testimonial.name}</p>
+                          <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </AnimatedSection>
               ))}
             </div>
           </div>

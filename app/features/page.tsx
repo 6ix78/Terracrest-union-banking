@@ -43,6 +43,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { AnimatedSection } from "@/components/animated-section"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -279,7 +280,7 @@ export default function FeaturesPage() {
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-primary via-primary/95 to-secondary py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
+            <AnimatedSection variant="fade-up" className="mx-auto max-w-3xl text-center">
               <h1 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl">
                 Features & Services
               </h1>
@@ -295,14 +296,14 @@ export default function FeaturesPage() {
                   <Link href="/contact">Talk to an Advisor</Link>
                 </Button>
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </section>
 
         {/* Personal Banking Section */}
         <section id="personal" className="scroll-mt-20 py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-16">
+            <AnimatedSection variant="fade-up" className="mb-16">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">Personal Banking</p>
               <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                 Banking That Works for You
@@ -311,10 +312,11 @@ export default function FeaturesPage() {
                 Our personal banking solutions are designed to simplify your financial life with 
                 intuitive tools, competitive rates, and exceptional service.
               </p>
-            </div>
+            </AnimatedSection>
             <div className="grid gap-8 md:grid-cols-2">
-              {personalBankingFeatures.map((feature) => (
-                <Card key={feature.title} className="border-border/50 transition-all hover:shadow-lg">
+              {personalBankingFeatures.map((feature, i) => (
+                <AnimatedSection key={feature.title} variant="fade-up" delay={i * 100}>
+                <Card className="border-border/50 transition-all hover:shadow-lg h-full">
                   <CardHeader>
                     <div className="mb-2 inline-flex rounded-xl bg-primary/10 p-3 text-primary">
                       <feature.icon className="h-6 w-6" />
@@ -333,6 +335,7 @@ export default function FeaturesPage() {
                     </ul>
                   </CardContent>
                 </Card>
+                </AnimatedSection>
               ))}
             </div>
           </div>
@@ -341,7 +344,7 @@ export default function FeaturesPage() {
         {/* Business Banking Section */}
         <section id="business" className="scroll-mt-20 bg-muted/30 py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-16">
+            <AnimatedSection variant="fade-up" className="mb-16">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary">Business Banking</p>
               <h2 className="mt-2 text-balance text-3xl font-bold sm:text-4xl">
                 Power Your Business Growth
@@ -350,10 +353,11 @@ export default function FeaturesPage() {
                 From startups to enterprises, our business banking solutions provide the tools 
                 and support you need to manage cash flow, accept payments, and scale operations.
               </p>
-            </div>
+            </AnimatedSection>
             <div className="grid gap-8 md:grid-cols-2">
-              {businessBankingFeatures.map((feature) => (
-                <Card key={feature.title} className="border-border/50 bg-card transition-all hover:shadow-lg">
+              {businessBankingFeatures.map((feature, i) => (
+                <AnimatedSection key={feature.title} variant="fade-up" delay={i * 100}>
+                <Card className="border-border/50 bg-card transition-all hover:shadow-lg h-full">
                   <CardHeader>
                     <div className="mb-2 inline-flex rounded-xl bg-primary/10 p-3 text-primary">
                       <feature.icon className="h-6 w-6" />
@@ -372,6 +376,7 @@ export default function FeaturesPage() {
                     </ul>
                   </CardContent>
                 </Card>
+                </AnimatedSection>
               ))}
             </div>
           </div>
