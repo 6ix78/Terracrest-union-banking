@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/select"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { AnimatedSection } from "@/components/animated-section"
 
 const contactMethods = [
   {
@@ -119,7 +120,7 @@ export default function ContactPage() {
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-primary via-primary/95 to-secondary py-20 lg:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
+            <AnimatedSection variant="fade-up" className="mx-auto max-w-3xl text-center">
               <h1 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl">
                 Contact Us
               </h1>
@@ -127,7 +128,7 @@ export default function ContactPage() {
                 Have questions or need assistance? Our dedicated support team is here to help 
                 you 24/7. Choose your preferred contact method below.
               </p>
-            </div>
+            </AnimatedSection>
           </div>
         </section>
 
@@ -135,8 +136,9 @@ export default function ContactPage() {
         <section className="py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {contactMethods.map((method) => (
-                <Card key={method.title} className="border-border/50 text-center transition-all hover:shadow-lg">
+              {contactMethods.map((method, i) => (
+                <AnimatedSection key={method.title} variant="fade-up" delay={i * 100}>
+                <Card className="border-border/50 text-center transition-all hover:shadow-lg h-full">
                   <CardContent className="pt-6">
                     <div className="mx-auto mb-4 inline-flex rounded-xl bg-primary/10 p-4 text-primary">
                       <method.icon className="h-6 w-6" />
@@ -149,6 +151,7 @@ export default function ContactPage() {
                     </Button>
                   </CardContent>
                 </Card>
+                </AnimatedSection>
               ))}
             </div>
           </div>
@@ -159,7 +162,7 @@ export default function ContactPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-2">
               {/* Contact Form */}
-              <div>
+              <AnimatedSection variant="slide-in-left">
                 <h2 className="text-2xl font-bold">Send Us a Message</h2>
                 <p className="mt-2 text-muted-foreground">
                   Fill out the form below and we will get back to you within 24 hours.
@@ -230,10 +233,10 @@ export default function ContactPage() {
                     </Button>
                   </form>
                 )}
-              </div>
+              </AnimatedSection>
 
               {/* Office Locations */}
-              <div>
+              <AnimatedSection variant="slide-in-right">
                 <h2 className="text-2xl font-bold">Our Offices</h2>
                 <p className="mt-2 text-muted-foreground">
                   Visit us at one of our branch locations for in-person assistance.
@@ -293,7 +296,7 @@ export default function ContactPage() {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>

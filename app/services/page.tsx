@@ -6,6 +6,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { AnimatedSection } from "@/components/animated-section"
 import {
   CreditCard,
   Building2,
@@ -117,7 +118,7 @@ export default function ServicesPage() {
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary/10 via-secondary/5 to-background overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
         <div className="container mx-auto px-4 relative">
-          <div className="max-w-3xl mx-auto text-center">
+          <AnimatedSection variant="fade-up" className="max-w-3xl mx-auto text-center">
             <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
               Our Services
             </span>
@@ -137,14 +138,14 @@ export default function ServicesPage() {
                 <Link href="/contact">Speak to an Advisor</Link>
               </Button>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Banking Services */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <AnimatedSection variant="fade-up" className="text-center mb-16">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">Banking Services</span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
               Complete Banking Solutions
@@ -152,11 +153,12 @@ export default function ServicesPage() {
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Whether you&apos;re an individual or a business, we have the right banking solutions for you.
             </p>
-          </div>
+          </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-8">
             {bankingServices.map((service, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 overflow-hidden border-0 shadow-lg">
+              <AnimatedSection key={index} variant="fade-up" delay={index * 100}>
+              <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden border-0 shadow-lg h-full">
                 <CardContent className="p-0">
                   <div className="flex flex-col md:flex-row">
                     <div className={`w-full md:w-1/3 bg-gradient-to-br ${service.color} p-8 flex items-center justify-center`}>
@@ -182,6 +184,7 @@ export default function ServicesPage() {
                   </div>
                 </CardContent>
               </Card>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -190,7 +193,7 @@ export default function ServicesPage() {
       {/* Loan Products */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <AnimatedSection variant="fade-up" className="text-center mb-16">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">Loan Products</span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
               Flexible Financing Options
@@ -198,11 +201,12 @@ export default function ServicesPage() {
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Competitive rates and flexible terms to help you achieve your goals.
             </p>
-          </div>
+          </AnimatedSection>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {loanProducts.map((loan, index) => (
-              <Card key={index} className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-0 shadow-lg overflow-hidden">
+              <AnimatedSection key={index} variant="fade-up" delay={index * 80}>
+              <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-0 shadow-lg overflow-hidden h-full">
                 <CardContent className="p-6">
                   <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <loan.icon className="w-7 h-7 text-primary" />
@@ -223,6 +227,7 @@ export default function ServicesPage() {
                   </Button>
                 </CardContent>
               </Card>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -232,7 +237,7 @@ export default function ServicesPage() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <AnimatedSection variant="slide-in-left">
               <span className="text-primary font-semibold text-sm uppercase tracking-wider">Digital Banking</span>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-6">
                 Banking at Your Fingertips
@@ -264,9 +269,9 @@ export default function ServicesPage() {
                   <Link href="/features">View All Features</Link>
                 </Button>
               </div>
-            </div>
+            </AnimatedSection>
 
-            <div className="relative">
+            <AnimatedSection variant="slide-in-right" className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl blur-3xl" />
               <div className="relative bg-gradient-to-br from-primary to-secondary rounded-3xl p-8 text-white">
                 <Image src="/logo.png" alt="TerraCrest Union" width={150} height={50} className="mb-6 brightness-0 invert" />
@@ -283,7 +288,7 @@ export default function ServicesPage() {
                   </Button>
                 </div>
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
